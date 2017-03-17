@@ -13,7 +13,7 @@ public class Lamias extends Hadas{
         } else {
             while (Aleta <= 0 && Aleta > 5) {
                 Aleta = Double.parseDouble(JOptionPane.showInputDialog(
-                        "Ingrese el Tamaño Otravez"));
+                        "El tamaño no puede ser menor a 0 o mayor a 5, ingreselo otra vez"));
             }
         }
         if (Branquias > 0 && Branquias <= 8) {
@@ -21,7 +21,7 @@ public class Lamias extends Hadas{
         } else {
             while (Branquias <= 0 && Branquias > 8) {
                 Branquias = Integer.parseInt(JOptionPane.showInputDialog(
-                        "Ingrese el Tamaño Otravez"));
+                        "La cantidad de branquias no puede ser menor a 0 o mayor a 8, ingreselo otra vez"));
             }
         }
     }
@@ -36,7 +36,7 @@ public class Lamias extends Hadas{
         } else {
             while (Aleta <= 0 && Aleta > 5) {
                 Aleta = Double.parseDouble(JOptionPane.showInputDialog(
-                        "Ingrese el Tamaño Otravez"));
+                        "El tamaño no puede ser menor a 0 o mayor a 5, ingreselo otra vez"));
             }
         }
     }
@@ -51,14 +51,13 @@ public class Lamias extends Hadas{
         } else {
             while (Branquias <= 0 && Branquias > 8) {
                 Branquias = Integer.parseInt(JOptionPane.showInputDialog(
-                        "Ingrese el Tamaño Otravez"));
+                        "La cantidad de branquias no puede ser menor a 0 o mayor a 8, ingreselo otra vez"));
             }
         }
     }
 
     @Override
     public String toString() {
-        return "Lamia: "+nombre;
+        return super.toString();
     }
-    
 }

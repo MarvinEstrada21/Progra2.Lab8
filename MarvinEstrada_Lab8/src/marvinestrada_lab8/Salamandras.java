@@ -34,7 +34,7 @@ public class Salamandras extends Hadas{
 
     @Override
     public String toString() {
-        return "Salamandra: " + nombre;
+        return super.toString();
     }
     
 }

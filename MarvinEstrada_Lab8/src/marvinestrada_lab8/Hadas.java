@@ -18,7 +18,7 @@ public class Hadas implements Serializable{
         } else {
             while (altura >= 15) {
                 altura = Double.parseDouble(JOptionPane.showInputDialog(
-                        "Ingrese la altura del hada otravez"));
+                        "La altura no puede ser mayor a 15, ingresela otra vez"));
             }
         }
         if (edad > 0) {
@@ -26,7 +26,7 @@ public class Hadas implements Serializable{
         } else {
             while (edad <= 0) {
                 edad = Integer.parseInt(JOptionPane.showInputDialog(
-                        "Ingrese la edad del hada otravez"));
+                        "La edad no puede ser menor a 0, ingresela otra vez"));
             }
         }
         this.salud = salud;
@@ -51,7 +51,7 @@ public class Hadas implements Serializable{
         } else {
             while (altura >= 15) {
                 altura = Double.parseDouble(JOptionPane.showInputDialog(
-                        "Ingrese la altura del hada otravez"));
+                        "La altura no puede ser mayor a 15, ingresela otra vez"));
             }
         }
     }
@@ -66,7 +66,7 @@ public class Hadas implements Serializable{
         } else {
             while (edad <= 0) {
                 edad = Integer.parseInt(JOptionPane.showInputDialog(
-                        "Ingrese la edad del hada otravez"));
+                        "La edad no puede ser menor a 0, ingresela otra vez"));
             }
         }
     }
@@ -91,6 +91,4 @@ public class Hadas implements Serializable{
     public String toString() {
         return nombre;
     }
-    
-    
 }

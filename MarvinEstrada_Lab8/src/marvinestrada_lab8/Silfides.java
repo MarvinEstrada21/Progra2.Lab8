@@ -12,7 +12,7 @@ public class Silfides extends Hadas{
         } else {
             while (Alas < 6) {
                 Alas = Integer.parseInt(JOptionPane.showInputDialog(
-                        "Ingrese la cantidad de alas otravez"));
+                        "La cantidad de alas no puedes ser menor a 6, ingrese el dato de nuevo"));
             }
         }
     }
@@ -27,15 +27,13 @@ public class Silfides extends Hadas{
         } else {
             while (Alas < 6) {
                 Alas = Integer.parseInt(JOptionPane.showInputDialog(
-                        "Ingrese la cantidad de alas otravez"));
+                        "La cantidad de alas no puedes ser menor a 6, ingrese el dato de nuevo"));
             }
         }
     }
 
     @Override
     public String toString() {
-        return "Silfides: " + nombre;
+        return super.toString();
     }
-    
-    
 }
