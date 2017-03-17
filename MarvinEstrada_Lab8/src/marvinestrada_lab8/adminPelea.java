@@ -2,7 +2,7 @@ package marvinestrada_lab8;
 
 import javax.swing.JProgressBar;
 
-public class adminPelea {
+public class adminPelea extends Thread{
     private JProgressBar laif1;
     private JProgressBar laif2;
     private Hadas hada1;
@@ -10,13 +10,13 @@ public class adminPelea {
     private boolean vive;
     private boolean runs;
 
-    public adminPelea(JProgressBar laif1, JProgressBar laif2, Hadas hada1, Hadas hada2, boolean vive, boolean runs) {
+    public adminPelea(JProgressBar laif1, JProgressBar laif2, Hadas hada1, Hadas hada2) {
         this.laif1 = laif1;
         this.laif2 = laif2;
         this.hada1 = hada1;
         this.hada2 = hada2;
-        this.vive = vive;
-        this.runs = runs;
+        vive = true;
+        runs = true;
     }
 
     public JProgressBar getLaif1() {
@@ -72,6 +72,7 @@ public class adminPelea {
         return "adminPelea{" + "laif1=" + laif1 + ", laif2=" + laif2 + ", hada1=" + hada1 + ", hada2=" + hada2 + ", vive=" + vive + ", runs=" + runs + '}';
     }
 
+    @Override
     public void run() {
         while (vive) {
             if (runs) {

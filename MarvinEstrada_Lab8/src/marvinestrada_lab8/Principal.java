@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -107,6 +108,13 @@ public class Principal extends javax.swing.JFrame {
         cb_elimhadas = new javax.swing.JComboBox();
         jButton8 = new javax.swing.JButton();
         jd_pelea = new javax.swing.JDialog();
+        cb_player1 = new javax.swing.JComboBox<>();
+        cb_player2 = new javax.swing.JComboBox<>();
+        pb_player1 = new javax.swing.JProgressBar();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        pb_player2 = new javax.swing.JProgressBar();
+        jButton9 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -138,6 +146,11 @@ public class Principal extends javax.swing.JFrame {
         jLabel10.setText("Branquias");
 
         jButton3.setText("Guardar");
+        jButton3.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jButton3StateChanged(evt);
+            }
+        });
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -149,45 +162,46 @@ public class Principal extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(tf_salud_lamia, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(jLabel8)
+                        .addGap(10, 10, 10)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tf_poder_lamia, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(tf_salud_lamia, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(40, 40, 40)
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(tf_poder_lamia, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(tf_nombre_lamia, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tf_edad_lamia, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(20, 20, 20))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(tf_aleta_lamia)
-                                .addGap(19, 19, 19)))
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(tf_altura_lamia, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(2, 2, 2))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(tf_branquias_lamia, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(tf_nombre_lamia, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(tf_edad_lamia, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(20, 20, 20))
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                        .addComponent(tf_aleta_lamia)
+                                        .addGap(19, 19, 19)))
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                        .addComponent(jLabel4)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(tf_altura_lamia, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(2, 2, 2))
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                        .addComponent(jLabel10)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(tf_branquias_lamia, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(207, 207, 207)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(71, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(188, 188, 188))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -243,6 +257,11 @@ public class Principal extends javax.swing.JFrame {
         tf_salarbol_hama.setText("173");
 
         jButton4.setText("Guardar");
+        jButton4.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jButton4StateChanged(evt);
+            }
+        });
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -264,29 +283,28 @@ public class Principal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(tf_salud_hama, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(40, 40, 40)
-                                .addComponent(jLabel16)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(tf_poder_hama, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(tf_nombre_hama, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(tf_edad_hama, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel13)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(tf_altura_hama, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(tf_altura_hama, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel5Layout.createSequentialGroup()
+                                        .addComponent(tf_salud_hama, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(40, 40, 40)
+                                        .addComponent(jLabel16)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(tf_poder_hama, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(11, 11, 11)
                         .addComponent(jLabel17)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(tf_salarbol_hama, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(59, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(186, 186, 186))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -311,9 +329,9 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
                     .addComponent(tf_salarbol_hama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37))
+                .addGap(35, 35, 35))
         );
 
         jTabbedPane2.addTab("Hamadriades", jPanel5);
@@ -325,6 +343,11 @@ public class Principal extends javax.swing.JFrame {
         jLabel20.setText("Altura");
 
         jButton5.setText("Guardar");
+        jButton5.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jButton5StateChanged(evt);
+            }
+        });
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -348,35 +371,36 @@ public class Principal extends javax.swing.JFrame {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel24)
-                    .addComponent(jLabel22)
-                    .addComponent(jLabel19)
-                    .addComponent(jLabel18))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel6Layout.createSequentialGroup()
-                            .addComponent(tf_salud_silf, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(40, 40, 40)
-                            .addComponent(jLabel23)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(tf_poder_silf, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel6Layout.createSequentialGroup()
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel24)
+                            .addComponent(jLabel22)
+                            .addComponent(jLabel19)
+                            .addComponent(jLabel18))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(tf_nombre_silf, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(tf_edad_silf, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel20)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(tf_altura_silf, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(tf_alas_silf, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel6Layout.createSequentialGroup()
+                                    .addComponent(tf_salud_silf, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(40, 40, 40)
+                                    .addComponent(jLabel23)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(tf_poder_silf, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel6Layout.createSequentialGroup()
+                                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(tf_nombre_silf, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(tf_edad_silf, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel20)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(tf_altura_silf, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(tf_alas_silf, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(199, 199, 199)
+                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(66, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(193, 193, 193))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -427,6 +451,11 @@ public class Principal extends javax.swing.JFrame {
         jLabel31.setText("Alas");
 
         jButton6.setText("Guardar");
+        jButton6.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jButton6StateChanged(evt);
+            }
+        });
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -569,38 +598,34 @@ public class Principal extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGap(37, 37, 37)
-                                        .addComponent(jLabel35))
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel2Layout.createSequentialGroup()
-                                            .addGap(20, 20, 20)
-                                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(jLabel37)
-                                                .addComponent(jLabel34)
-                                                .addComponent(jLabel33)
-                                                .addComponent(jLabel32)))
-                                        .addGroup(jPanel2Layout.createSequentialGroup()
-                                            .addContainerGap()
-                                            .addComponent(jLabel38))))
-                                .addGap(38, 38, 38)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(tf_aleta_mod, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tf_branquias_mod, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tf_alas_mod, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(tf_nombre_mod, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tf_altura_mod, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tf_edad_mod, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(81, 81, 81)))
+                                .addGap(37, 37, 37)
+                                .addComponent(jLabel35))
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addGap(20, 20, 20)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel37)
+                                        .addComponent(jLabel34)
+                                        .addComponent(jLabel33)
+                                        .addComponent(jLabel32)))
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addContainerGap()
+                                    .addComponent(jLabel38))))
+                        .addGap(38, 38, 38)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(tf_aleta_mod, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tf_branquias_mod, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(tf_alas_mod, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(tf_nombre_mod, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_altura_mod, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_edad_mod, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
@@ -614,10 +639,7 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(cb_hadas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(32, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel32)
@@ -642,9 +664,10 @@ public class Principal extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel35)
                             .addComponent(tf_alas_mod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton7)
-                        .addGap(24, 24, 24))))
+                        .addGap(42, 42, 42)
+                        .addComponent(jButton7))
+                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Modificar", jPanel2);
@@ -671,11 +694,6 @@ public class Principal extends javax.swing.JFrame {
         cb_elimhadas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Lamias", "Hamadriades", "Silfides", "Ssalamadras" }));
 
         jButton8.setText("Eliminar");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -722,15 +740,69 @@ public class Principal extends javax.swing.JFrame {
             .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
+        pb_player1.setForeground(new java.awt.Color(51, 255, 0));
+        pb_player1.setValue(100);
+        pb_player1.setString("100%");
+        pb_player1.setStringPainted(true);
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setText("Player 1");
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel2.setText("Player 2");
+
+        pb_player2.setForeground(new java.awt.Color(51, 255, 0));
+        pb_player2.setValue(100);
+        pb_player2.setString("100%");
+        pb_player2.setStringPainted(true);
+
+        jButton9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton9.setText("FIGHT!!!");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jd_peleaLayout = new javax.swing.GroupLayout(jd_pelea.getContentPane());
         jd_pelea.getContentPane().setLayout(jd_peleaLayout);
         jd_peleaLayout.setHorizontalGroup(
             jd_peleaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 626, Short.MAX_VALUE)
+            .addGroup(jd_peleaLayout.createSequentialGroup()
+                .addGroup(jd_peleaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_peleaLayout.createSequentialGroup()
+                        .addGap(64, 64, 64)
+                        .addGroup(jd_peleaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1)
+                            .addComponent(pb_player1, javax.swing.GroupLayout.DEFAULT_SIZE, 509, Short.MAX_VALUE)
+                            .addGroup(jd_peleaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(cb_player1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cb_player2, 0, 158, Short.MAX_VALUE))
+                            .addComponent(pb_player2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jd_peleaLayout.createSequentialGroup()
+                        .addGap(265, 265, 265)
+                        .addComponent(jButton9)))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
         jd_peleaLayout.setVerticalGroup(
             jd_peleaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 381, Short.MAX_VALUE)
+            .addGroup(jd_peleaLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(cb_player1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(pb_player1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(65, 65, 65)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(cb_player2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(pb_player2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addComponent(jButton9)
+                .addGap(28, 28, 28))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -951,20 +1023,20 @@ public class Principal extends javax.swing.JFrame {
         try {
             FileInputStream enter = new FileInputStream(f);
             ObjectInputStream selc = new ObjectInputStream(enter);
-            Hadas fairy;
+            Hadas hada;
             try {
-                while ((fairy = (Hadas)selc.readObject()) != null) {
-                    if (fairy instanceof Lamias) {
-                        lamia.add((Lamias)fairy);
-                    } else if (fairy instanceof Hamadriades) {
-                        hamadriade.add((Hamadriades)fairy);
-                    } else if (fairy instanceof Silfides) {
-                        silfide.add((Silfides)fairy);
-                    } else if (fairy instanceof Salamandras) {
-                        salamandra.add((Salamandras)fairy);
+                while ((hada = (Hadas)selc.readObject()) != null) {
+                    if (hada instanceof Lamias) {
+                        lamia.add((Lamias)hada);
+                    } else if (hada instanceof Hamadriades) {
+                        hamadriade.add((Hamadriades)hada);
+                    } else if (hada instanceof Silfides) {
+                        silfide.add((Silfides)hada);
+                    } else if (hada instanceof Salamandras) {
+                        salamandra.add((Salamandras)hada);
                     }
                 }
-                Archivo = f;
+                archivo = f;
             } catch (Exception ex) {
             } finally {
                 selc.close();
@@ -1009,13 +1081,13 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_cb_hadasItemStateChanged
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        int postn = jl_modHadas.getSelectedIndex();
+        int pos = jl_modHadas.getSelectedIndex();
         if (cb_hadas.getSelectedIndex() == 0) {
-            lamia.get(postn).setNombre(tf_nombre_mod.getText());
-            lamia.get(postn).setAltura(Double.parseDouble(tf_altura_mod.getText()));
-            lamia.get(postn).setEdad(Integer.parseInt(tf_edad_mod.getText()));
-            lamia.get(postn).setAleta(Double.parseDouble(tf_aleta_mod.getText()));
-            lamia.get(postn).setBranquias(Integer.parseInt(tf_branquias_mod.getText()));
+            lamia.get(pos).setNombre(tf_nombre_mod.getText());
+            lamia.get(pos).setAltura(Double.parseDouble(tf_altura_mod.getText()));
+            lamia.get(pos).setEdad(Integer.parseInt(tf_edad_mod.getText()));
+            lamia.get(pos).setAleta(Double.parseDouble(tf_aleta_mod.getText()));
+            lamia.get(pos).setBranquias(Integer.parseInt(tf_branquias_mod.getText()));
             tf_nombre_mod.setText("");
             tf_altura_mod.setText("");
             tf_edad_mod.setText("");
@@ -1026,9 +1098,9 @@ public class Principal extends javax.swing.JFrame {
             tf_branquias_mod.setText("");
             tf_branquias_mod.setEnabled(true);
         } else if (cb_hadas.getSelectedIndex() == 1) {
-            hamadriade.get(postn).setNombre(tf_nombre_mod.getText());
-            hamadriade.get(postn).setAltura(Double.parseDouble(tf_altura_mod.getText()));
-            hamadriade.get(postn).setEdad(Integer.parseInt(tf_edad_mod.getText()));
+            hamadriade.get(pos).setNombre(tf_nombre_mod.getText());
+            hamadriade.get(pos).setAltura(Double.parseDouble(tf_altura_mod.getText()));
+            hamadriade.get(pos).setEdad(Integer.parseInt(tf_edad_mod.getText()));
             tf_nombre_mod.setText("");
             tf_altura_mod.setText("");
             tf_edad_mod.setText("");
@@ -1039,10 +1111,10 @@ public class Principal extends javax.swing.JFrame {
             tf_branquias_mod.setText("");
             tf_branquias_mod.setEnabled(false);
         } else if (cb_hadas.getSelectedIndex() == 2) {
-            silfide.get(postn).setNombre(tf_nombre_mod.getText());
-            silfide.get(postn).setAltura(Double.parseDouble(tf_altura_mod.getText()));
-            silfide.get(postn).setEdad(Integer.parseInt(tf_edad_mod.getText()));
-            silfide.get(postn).setAlas(Integer.parseInt(tf_alas_mod.getText()));
+            silfide.get(pos).setNombre(tf_nombre_mod.getText());
+            silfide.get(pos).setAltura(Double.parseDouble(tf_altura_mod.getText()));
+            silfide.get(pos).setEdad(Integer.parseInt(tf_edad_mod.getText()));
+            silfide.get(pos).setAlas(Integer.parseInt(tf_alas_mod.getText()));
             tf_nombre_mod.setText("");
             tf_altura_mod.setText("");
             tf_edad_mod.setText("");
@@ -1053,10 +1125,10 @@ public class Principal extends javax.swing.JFrame {
             tf_branquias_mod.setText("");
             tf_branquias_mod.setEnabled(false);
         } else if (cb_hadas.getSelectedIndex() == 3) {
-            salamandra.get(postn).setNombre(tf_nombre_mod.getText());
-            salamandra.get(postn).setAltura(Double.parseDouble(tf_altura_mod.getText()));
-            salamandra.get(postn).setEdad(Integer.parseInt(tf_edad_mod.getText()));
-            salamandra.get(postn).setAlas(Integer.parseInt(tf_alas_mod.getText()));
+            salamandra.get(pos).setNombre(tf_nombre_mod.getText());
+            salamandra.get(pos).setAltura(Double.parseDouble(tf_altura_mod.getText()));
+            salamandra.get(pos).setEdad(Integer.parseInt(tf_edad_mod.getText()));
+            salamandra.get(pos).setAlas(Integer.parseInt(tf_alas_mod.getText()));
             tf_nombre_mod.setText("");
             tf_altura_mod.setText("");
             tf_edad_mod.setText("");
@@ -1072,91 +1144,163 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        if (cont > 0) {
-            Archivo = new File(PATH);
-            FileOutputStream fw = null;
-            ObjectOutputStream bw = null;
-            try {
-                fw = new FileOutputStream(Archivo);
-                bw = new  ObjectOutputStream(fw);
-                for (Lamias l : lamia) {
-                    bw.writeObject(l);
-                }
-                for (Hamadriades h : hamadriade) {
-                    bw.writeObject(h);
-                }
-                for (Silfides s : silfide) {
-                    bw.writeObject(s);
-                }
-                for (Salamandras ss : salamandra) {
-                    bw.writeObject(ss);
-                }
-                bw.flush();
-            } catch (Exception ex) {
-            } finally {
-                try {
-                    bw.close();
-                    fw.close();
-                } catch (Exception ex) { 
-                }
+        if (cont == 0) {
+            JFileChooser jfc = new JFileChooser();
+            int seleccion = jfc.showSaveDialog(this);
+            if (seleccion == JFileChooser.APPROVE_OPTION) {
+                archivo = jfc.getSelectedFile();
             }
-        } else {
-            JFileChooser fcs = new JFileChooser();
-            int zx = fcs.showSaveDialog(this);
-            if (zx == JFileChooser.APPROVE_OPTION) {
-                File fs = fcs.getSelectedFile();
-                PATH = fs.getAbsolutePath();
-                FileOutputStream fw = null;
-                ObjectOutputStream bw = null;
-                try {
-                    fw = new FileOutputStream(fs);
-                    bw = new ObjectOutputStream(fw);
-                    for (Lamias l : lamia) {
-                        bw.writeObject(l);
-                    }
-                    for (Hamadriades h : hamadriade) {
-                        bw.writeObject(h);
-                    }
-                    for (Silfides s : silfide) {
-                        bw.writeObject(s);
-                    }
-                    for (Salamandras ss : salamandra) {
-                        bw.writeObject(ss);
-                    }
-                    bw.flush();
-                } catch (Exception ex) {
-                } finally {
-                    try {
-                        bw.close();
-                        fw.close();
-                    } catch (Exception ex) { 
-                    }
-                }
-            }
+
+            cont++;
+        }
+        try {
+            FileOutputStream hadastxt = new FileOutputStream(archivo);
+            ObjectOutputStream oos = new ObjectOutputStream(hadastxt);
+
+            oos.writeObject(lamia);
+            oos.writeObject(hamadriade);
+            oos.writeObject(silfide);
+            oos.writeObject(salamandra);
+
+            oos.close();
+            hadastxt.close();
+            System.out.println("GREAT");
+            JOptionPane.showMessageDialog(null, "Guardado exitosamente");
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        JOptionPane.showMessageDialog(this, "");
+        JOptionPane.showMessageDialog(this, "BATALLA DE HADAS!!!\n"
+                + "Simulación de un \"juego\" de batalla entre hadas\n"
+                + "Creado por: Marvin Estrada");
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
+    private void jButton3StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jButton3StateChanged
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+            for (Lamias temp : lamia) {
+                modelo.addElement(temp);
+            }
+        cb_player1.setModel(modelo);
+        cb_player2.setModel(modelo);
+    }//GEN-LAST:event_jButton3StateChanged
+
+    private void jButton4StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jButton4StateChanged
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+            for (Hamadriades temp : hamadriade) {
+                modelo.addElement(temp);
+            }
+        cb_player1.setModel(modelo);
+        cb_player2.setModel(modelo);
+    }//GEN-LAST:event_jButton4StateChanged
+
+    private void jButton5StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jButton5StateChanged
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+            for (Silfides temp : silfide) {
+                modelo.addElement(temp);
+            }
+        cb_player1.setModel(modelo);
+        cb_player2.setModel(modelo);
+    }//GEN-LAST:event_jButton5StateChanged
+
+    private void jButton6StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jButton6StateChanged
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+            for (Salamandras temp : salamandra) {
+                modelo.addElement(temp);
+            }
+        cb_player1.setModel(modelo);
+        cb_player2.setModel(modelo);
+    }//GEN-LAST:event_jButton6StateChanged
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        if (ap1.getHada1() instanceof Lamias && ap2.getHada2() instanceof Silfides){
+            ap1 = new adminPelea(pb_player1, pb_player2, (Hadas)cb_player1.getSelectedItem(), (Hadas)cb_player2.getSelectedItem());
+            ap1.start();
+            ap2.start();
+        }
+        if (ap1.getHada1() instanceof Lamias && ap2.getHada2() instanceof Salamandras){
+            ap1 = new adminPelea(pb_player1, pb_player2, (Hadas)cb_player1.getSelectedItem(), (Hadas)cb_player2.getSelectedItem());
+            ap1.start();
+            ap2.start();
+        }
+        if (ap1.getHada1() instanceof Lamias && ap2.getHada2() instanceof Hamadriades){
+            ap1 = new adminPelea(pb_player1, pb_player2, (Hadas)cb_player1.getSelectedItem(), (Hadas)cb_player2.getSelectedItem());
+            ap1.start();
+            ap2.start();
+        }
+        if (ap1.getHada1() instanceof Lamias && ap2.getHada2() instanceof Lamias){
+            ap1 = new adminPelea(pb_player1, pb_player2, (Hadas)cb_player1.getSelectedItem(), (Hadas)cb_player2.getSelectedItem());
+            ap1.start();
+            ap2.start();
+        }
+        if (ap1.getHada1() instanceof Silfides && ap2.getHada2() instanceof Lamias){
+            ap1 = new adminPelea(pb_player1, pb_player2, (Hadas)cb_player1.getSelectedItem(), (Hadas)cb_player2.getSelectedItem());
+            ap1.start();
+            ap2.start();
+        }
+        if (ap1.getHada1() instanceof Silfides && ap2.getHada2() instanceof Salamandras){
+            ap1 = new adminPelea(pb_player1, pb_player2, (Hadas)cb_player1.getSelectedItem(), (Hadas)cb_player2.getSelectedItem());
+            ap1.start();
+            ap2.start();
+        }
+        if (ap1.getHada1() instanceof Silfides && ap2.getHada2() instanceof Hamadriades){
+            ap1 = new adminPelea(pb_player1, pb_player2, (Hadas)cb_player1.getSelectedItem(), (Hadas)cb_player2.getSelectedItem());
+            ap1.start();
+            ap2.start();
+        }
+        if (ap1.getHada1() instanceof Silfides && ap2.getHada2() instanceof Silfides){
+            ap1 = new adminPelea(pb_player1, pb_player2, (Hadas)cb_player1.getSelectedItem(), (Hadas)cb_player2.getSelectedItem());
+            ap1.start();
+            ap2.start();
+        }
+        if (ap1.getHada1() instanceof Salamandras && ap2.getHada2() instanceof Lamias){
+            ap1 = new adminPelea(pb_player1, pb_player2, (Hadas)cb_player1.getSelectedItem(), (Hadas)cb_player2.getSelectedItem());
+            ap1.start();
+            ap2.start();
+        }
+        if (ap1.getHada1() instanceof Salamandras && ap2.getHada2() instanceof Silfides){
+            ap1 = new adminPelea(pb_player1, pb_player2, (Hadas)cb_player1.getSelectedItem(), (Hadas)cb_player2.getSelectedItem());
+            ap1.start();
+            ap2.start();
+        }
+        if (ap1.getHada1() instanceof Salamandras && ap2.getHada2() instanceof Hamadriades){
+            ap1 = new adminPelea(pb_player1, pb_player2, (Hadas)cb_player1.getSelectedItem(), (Hadas)cb_player2.getSelectedItem());
+            ap1.start();
+            ap2.start();
+        }
+        if (ap1.getHada1() instanceof Salamandras && ap2.getHada2() instanceof Salamandras){
+            ap1 = new adminPelea(pb_player1, pb_player2, (Hadas)cb_player1.getSelectedItem(), (Hadas)cb_player2.getSelectedItem());
+            ap1.start();
+            ap2.start();
+        }
+        if (ap1.getHada1() instanceof Hamadriades && ap2.getHada2() instanceof Lamias){
+            ap1 = new adminPelea(pb_player1, pb_player2, (Hadas)cb_player1.getSelectedItem(), (Hadas)cb_player2.getSelectedItem());
+            ap1.start();
+            ap2.start();
+        }
+        if (ap1.getHada1() instanceof Hamadriades && ap2.getHada2() instanceof Silfides){
+            ap1 = new adminPelea(pb_player1, pb_player2, (Hadas)cb_player1.getSelectedItem(), (Hadas)cb_player2.getSelectedItem());
+            ap1.start();
+            ap2.start();
+        }
+        if (ap1.getHada1() instanceof Hamadriades && ap2.getHada2() instanceof Salamandras){
+            ap1 = new adminPelea(pb_player1, pb_player2, (Hadas)cb_player1.getSelectedItem(), (Hadas)cb_player2.getSelectedItem());
+            ap1.start();
+            ap2.start();
+        }
+        if (ap1.getHada1() instanceof Hamadriades && ap2.getHada2() instanceof Hamadriades){
+            ap1 = new adminPelea(pb_player1, pb_player2, (Hadas)cb_player1.getSelectedItem(), (Hadas)cb_player2.getSelectedItem());
+            ap1.start();
+            ap2.start();
+        }
+    }//GEN-LAST:event_jButton9ActionPerformed
+
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Windows".equals(info.getName())) {
@@ -1173,10 +1317,6 @@ public class Principal extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Principal().setVisible(true);
@@ -1187,6 +1327,8 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox cb_elimhadas;
     private javax.swing.JComboBox cb_hadas;
+    private javax.swing.JComboBox<String> cb_player1;
+    private javax.swing.JComboBox<String> cb_player2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -1195,6 +1337,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -1204,6 +1348,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
@@ -1250,6 +1395,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JDialog jd_pelea;
     private javax.swing.JList jl_elimHadas;
     private javax.swing.JList jl_modHadas;
+    private javax.swing.JProgressBar pb_player1;
+    private javax.swing.JProgressBar pb_player2;
     private javax.swing.JTextField tf_alas_mod;
     private javax.swing.JTextField tf_alas_sala;
     private javax.swing.JTextField tf_alas_silf;
@@ -1282,11 +1429,12 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextField tf_salud_sala;
     private javax.swing.JTextField tf_salud_silf;
     // End of variables declaration//GEN-END:variables
-ArrayList<Lamias> lamia = new ArrayList();
-ArrayList<Hamadriades> hamadriade = new ArrayList();
-ArrayList<Silfides> silfide = new ArrayList();
-ArrayList<Salamandras> salamandra = new ArrayList();
-File Archivo;
-int cont;
-String PATH;
+    ArrayList<Lamias> lamia = new ArrayList();
+    ArrayList<Hamadriades> hamadriade = new ArrayList();
+    ArrayList<Silfides> silfide = new ArrayList();
+    ArrayList<Salamandras> salamandra = new ArrayList();
+    File archivo;
+    int cont;
+    adminPelea ap1;
+    adminPelea ap2;
 }
