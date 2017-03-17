@@ -104,7 +104,7 @@ public class Principal extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jl_elimHadas = new javax.swing.JList();
+        jl_eliminar = new javax.swing.JList();
         cb_elimhadas = new javax.swing.JComboBox();
         jButton8 = new javax.swing.JButton();
         jd_pelea = new javax.swing.JDialog();
@@ -672,7 +672,7 @@ public class Principal extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Modificar", jPanel2);
 
-        jScrollPane2.setViewportView(jl_elimHadas);
+        jScrollPane2.setViewportView(jl_eliminar);
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -694,6 +694,11 @@ public class Principal extends javax.swing.JFrame {
         cb_elimhadas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Lamias", "Hamadriades", "Silfides", "Ssalamadras" }));
 
         jButton8.setText("Eliminar");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -1017,32 +1022,22 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jl_modHadasValueChanged
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        JFileChooser fc = new JFileChooser();
-        int op =  fc.showOpenDialog(this);
-        File f = fc.getSelectedFile();
+        JFileChooser jfc = new JFileChooser();
+        int seleccion = jfc.showOpenDialog(this);
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            archivo = jfc.getSelectedFile();
+        }
+        cont++;
         try {
-            FileInputStream enter = new FileInputStream(f);
-            ObjectInputStream selc = new ObjectInputStream(enter);
-            Hadas hada;
-            try {
-                while ((hada = (Hadas)selc.readObject()) != null) {
-                    if (hada instanceof Lamias) {
-                        lamia.add((Lamias)hada);
-                    } else if (hada instanceof Hamadriades) {
-                        hamadriade.add((Hamadriades)hada);
-                    } else if (hada instanceof Silfides) {
-                        silfide.add((Silfides)hada);
-                    } else if (hada instanceof Salamandras) {
-                        salamandra.add((Salamandras)hada);
-                    }
-                }
-                archivo = f;
-            } catch (Exception ex) {
-            } finally {
-                selc.close();
-                enter.close();
-            }
-        } catch (Exception ex) {
+            FileInputStream entrada = new FileInputStream(archivo);
+            ObjectInputStream objeto = new ObjectInputStream(entrada);
+
+            lamia = (ArrayList<Lamias>) objeto.readObject();
+            hamadriade = (ArrayList<Hamadriades>) objeto.readObject();
+            silfide = (ArrayList<Silfides>) objeto.readObject();
+            salamandra = (ArrayList<Salamandras>) objeto.readObject();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
@@ -1297,8 +1292,65 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        
+        if (cont == 0) {
+            JFileChooser jfc = new JFileChooser();
+            int seleccion = jfc.showSaveDialog(this);
+            if (seleccion == JFileChooser.APPROVE_OPTION) {
+                archivo = jfc.getSelectedFile();
+            }
+
+            cont++;
+        }
+        try {
+            FileOutputStream hadastxt = new FileOutputStream(archivo);
+            ObjectOutputStream oos = new ObjectOutputStream(hadastxt);
+
+            oos.writeObject(lamia);
+            oos.writeObject(hamadriade);
+            oos.writeObject(silfide);
+            oos.writeObject(salamandra);
+
+            oos.close();
+            hadastxt.close();
+            System.out.println("GREAT");
+            JOptionPane.showMessageDialog(null, "Guardado exitosamente");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        int pos = jl_eliminar.getSelectedIndex();
+        DefaultListModel modelo = new DefaultListModel();
+        if (jl_eliminar.getSelectedIndex() != -1) {
+            lamia.remove(pos);
+            for (int i = 0; i < lamia.size(); i++) {
+                modelo.addElement(lamia.get(i));
+            }
+            jl_eliminar.setModel(modelo);
+        } 
+        if (jl_eliminar.getSelectedIndex() != -1) {
+            hamadriade.remove(pos);
+            for (int i = 0; i < hamadriade.size(); i++) {
+                modelo.addElement(hamadriade.get(i));
+            }
+            jl_eliminar.setModel(modelo);
+        }
+        if (jl_eliminar.getSelectedIndex() != -1) {
+            silfide.remove(pos);
+            for (int i = 0; i < silfide.size(); i++) {
+                modelo.addElement(silfide.get(i));
+            }
+            jl_eliminar.setModel(modelo);
+        }
+        if (jl_eliminar.getSelectedIndex() != -1) {
+            salamandra.remove(pos);
+            for (int i = 0; i < salamandra.size(); i++) {
+                modelo.addElement(salamandra.get(i));
+            }
+            jl_eliminar.setModel(modelo);
+        }
+    }//GEN-LAST:event_jButton8ActionPerformed
 
     public static void main(String args[]) {
         try {
@@ -1393,7 +1445,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JDialog jd_hadas;
     private javax.swing.JDialog jd_pelea;
-    private javax.swing.JList jl_elimHadas;
+    private javax.swing.JList jl_eliminar;
     private javax.swing.JList jl_modHadas;
     private javax.swing.JProgressBar pb_player1;
     private javax.swing.JProgressBar pb_player2;
